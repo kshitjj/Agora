@@ -1,2 +1,2 @@
 # Agora
-Agora is supply chain on blockchain, yet to figure out how it's gonna work lol
+Agora is Amazon on blockchain, with a touch of anonimity and trust.
