@@ -1,10 +1,13 @@
+import twitter from "../assets/twitter.svg"
+import hackThisFall from "../assets/hackthisfall.svg"
+import discord from "../assets/discord.svg"
+
 function SocialMedia() {
   return(
     <div class="socialMediaTray">
-      <img src={Twitter} alt="TwitterLogo" />
-      <img src={Instagram} alt="InstagramLogo" />
-      <img src={HackThisFall} alt="HackThisFallLogo" />
-      <img src={Discord} alt="DiscordLogo" />
+      <img src={twitter} style={{"height": "60px", "padding": "20px"}} alt="TwitterLogo" />
+      <img src={hackThisFall} style={{"backgroundColor": "#000", "padding": "10px"}} alt="HackThisFallLogo" />
+      <img src={discord} style={{"height": "60px", "padding": "20px"}} alt="DiscordLogo" />
     </div>
   )
 }
