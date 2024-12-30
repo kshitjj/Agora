@@ -4,6 +4,7 @@
   "description": "Agora is Amazon on blockchain, with a touch of anonimity and trust.",
   "main": "index.js",
   "scripts": {
+    "dev": "node server/index.js",
     "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
     "express": "^4.21.1",
-    "mongodb": "^6.0"
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.2"
   }
 }

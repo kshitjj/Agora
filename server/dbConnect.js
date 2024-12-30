@@ -1,6 +1,9 @@
+//This file is no longer needed, but till the functions of mongoose are defined its kept for reference
+
 const { MongoClient } = require("mongodb");
-const uri = "mongodb+srv://agora:agorian@cluster0.oxl4y.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-const client = new MongoClient(uri);
+require('dotenv').config();
+
+const client = new MongoClient(process.env.DATABASE_URL);
 
 // Collections
 let usersCol, buyCol, productsCol;
