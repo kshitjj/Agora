@@ -43,6 +43,34 @@ userRouter.post('/login', async function(req, res){
     }
 })
 
+
+userRouter.post('/cart', userMiddleware, async function(req, res){
+    const { userId, productId} = req.body;
+    await cartModel.create({
+        sellerId: userId,
+        productId: productId
+    })
+
+    res.json({
+        message: "Item successfully added to the cart!"
+    })
+})
+
+userRouter.delete('/cart', userMiddleware, async function(req, res){
+    const productId = req.body;   
+
+    try {
+        await cartModel.deleteOne({ productId });
+        return res.json({
+            message: "Item was successfully removed!"
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: "An error occurred while removing the item.",
+        });
+    }
+})
+
 userRouter.get('/cart', userMiddleware, async function(req, res){
     const userId = req.body;
     

@@ -23,40 +23,8 @@ main()
 
 // // Routes
 
-// // Add a new user
-// app.post("/users", async (req, res) => {
-//     const { username, password, name, email } = req.body;
-//     await usersCol.insertOne({ username, password, name, email });
-//     res.status(201).send("User added successfully.");
-// });
 
-// // View items in a user's cart
-// app.get("/cart/:username", async (req, res) => {
-//     const { username } = req.params;
-//     const items = await buyCol.find({ username }).project({ _id: 0 }).toArray();
-//     res.json(items);
-// });
 
-// // Delete an item from the cart
-// app.delete("/cart/:buyId", async (req, res) => {
-//     const buyId = parseInt(req.params.buyId);
-//     await buyCol.deleteOne({ buy_id: buyId });
-//     res.send("Item deleted from cart.");
-// });
-
-// // Add an item to the cart
-// app.post("/cart", async (req, res) => {
-//     const { username, product_id } = req.body;
-//     const count = await buyCol.countDocuments({ username, product_id });
-
-//     if (count === 0) {
-//         const buy_id = Math.floor(Math.random() * 10000);
-//         await buyCol.insertOne({ buy_id, username, product_id });
-//         res.send("Item added to cart.");
-//     } else {
-//         res.status(409).send("Item already in cart.");
-//     }
-// });
 
 // // Fetch all products
 // app.get("/products", async (req, res) => {
