@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const userRouter = Router();
-const { userModel, cartModel } = require('../db');
+const { userModel, cartModel, productModel } = require('../db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { userMiddleware } = require('../middlewares/user');
@@ -43,9 +43,25 @@ userRouter.post('/login', async function(req, res){
     }
 })
 
+userRouter.post('/product', userMiddleware, async function(req, res){
+    const { name, description, price } = req.body;
+    const userId = req.userId;
+    await productModel.create({
+        name: name,
+        description: description,
+        seller: userId,
+        price: price
+    })
+
+    res.json({
+        message: "Product added successfully"
+    })
+})
+
 
 userRouter.post('/cart', userMiddleware, async function(req, res){
-    const { userId, productId} = req.body;
+    const productId = req.body;
+    const userId = req.userId;
     await cartModel.create({
         sellerId: userId,
         productId: productId
@@ -72,7 +88,7 @@ userRouter.delete('/cart', userMiddleware, async function(req, res){
 })
 
 userRouter.get('/cart', userMiddleware, async function(req, res){
-    const userId = req.body;
+    const userId = req.userId;
     
     const response = await cartModel.find({
         userId

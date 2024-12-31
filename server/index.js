@@ -24,8 +24,6 @@ main()
 // // Routes
 
 
-
-
 // // Fetch all products
 // app.get("/products", async (req, res) => {
 //     const products = await productsCol.find().project({ _id: 0 }).toArray();
