@@ -41,7 +41,9 @@ userRouter.post('/login', async function(req, res){
     if(bcrypt.compareSync(password, response.password.toString())){
         const token = jwt.sign({
             id: response._id.toString()
-        }, process.env.JWT_SECRET);
+        }, process.env.JWT_SECRET, {
+                expiresIn: process.env.JWT_EXPIRES_IN,
+        });
 
         res.json({
             token
@@ -113,7 +115,6 @@ userRouter.get('/cart', userMiddleware, async function(req, res){
     }
 })
 
-userRouter.get('/cleanse', )
 
 module.exports = {
     userRouter: userRouter
