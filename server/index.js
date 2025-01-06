@@ -1,9 +1,9 @@
 const express = require('express');
 const { userRouter } = require('./routes/user.routes');
 const app = express();
-const port = 3001;
 const mongoose = require('mongoose');
 require('dotenv').config();
+const port = process.env.PORT;
 
 //middleware for parsing the data
 app.use(express.json());
