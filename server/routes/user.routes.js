@@ -10,16 +10,26 @@ userRouter.post('/signup', async function(req, res){
     const { email, username, name, password } = req.body;
     const hashedPassword = bcrypt.hashSync(password, 5);
 
-    await userModel.create({
+    const response = await userModel.findOne({
         email: email,
-        username: username,
-        name: name,
-        password: hashedPassword
-    });
-
-    res.json({
-        message: "You are signed up!"
     })
+
+    if (response !== null) {
+        res.json({
+            message: "You have already signed in with this email!"
+        })
+    } else {
+        await userModel.create({
+            email: email,
+            username: username,
+            name: name,
+            password: hashedPassword
+        });
+
+        res.json({
+            message: "You are signed up!"
+        })
+    }
 })
 
 userRouter.post('/login', async function(req, res){
@@ -102,6 +112,8 @@ userRouter.get('/cart', userMiddleware, async function(req, res){
         res.json({response})        
     }
 })
+
+userRouter.get('/cleanse', )
 
 module.exports = {
     userRouter: userRouter
