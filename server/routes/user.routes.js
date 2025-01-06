@@ -70,6 +70,14 @@ userRouter.post('/product', userMiddleware, async function(req, res){
     })
 })
 
+// gets all the products
+userRouter.get('/product', async function(req, res){
+    const products = await productModel.find();
+    res.json({
+        product: products,
+    })
+})
+
 
 userRouter.post('/cart', userMiddleware, async function(req, res){
     const productId = req.body;
